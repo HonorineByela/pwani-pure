@@ -65,6 +65,13 @@ app.get("/", (req, res) => {
             font-size:18px;
             cursor:pointer;
             border-radius:10px;
+            transition:0.3s;
+          }
+
+          button:hover{
+            background:white;
+            color:black;
+            box-shadow:0 0 20px gold;
           }
 
           .products{
@@ -91,6 +98,12 @@ app.get("/", (req, res) => {
             overflow:hidden;
             text-align:center;
             padding-bottom:20px;
+            transition:0.4s;
+          }
+
+          .card:hover{
+            transform:translateY(-10px);
+            box-shadow:0 0 25px gold;
           }
 
           .card img{
@@ -106,127 +119,89 @@ app.get("/", (req, res) => {
           .card p{
             width:100%;
           }
-          .card{
-  transition:0.4s;
-}
 
-.card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 0 25px gold;
-}
+          .about{
+            padding:100px 40px;
+          }
 
-button{
-  transition:0.3s;
-}
+          .about-content{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+            gap:50px;
+            align-items:center;
+          }
 
-button:hover{
-  background:white;
-  color:black;
-  box-shadow:0 0 20px gold;
-}
+          .about-text h2{
+            color:gold;
+            font-size:45px;
+          }
 
-footer{
-  text-align:center;
-  padding:40px;
-  border-top:1px solid gold;
-  margin-top:80px;
-  color:gold;
-}
-<section class="about">
+          .about-text p{
+            width:100%;
+            line-height:1.8;
+          }
 
-  <div class="about-content">
+          .about-image img{
+            width:100%;
+            border-radius:20px;
+            border:2px solid gold;
+          }
 
-    <div class="about-text">
-      <h2>About Pwani Pure</h2>
+          .categories{
+            padding:80px 40px;
+          }
 
-      <p>
-        Pwani Pure blends luxury skincare and fashion into one timeless experience.
-        Inspired by elegance, confidence, and coastal beauty, our collections are
-        crafted for modern individuals who appreciate sophistication and quality.
-      </p>
+          .categories h2{
+            text-align:center;
+            color:gold;
+            font-size:40px;
+            margin-bottom:40px;
+          }
 
-      <button>Discover More</button>
-    </div>
+          .category-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:30px;
+          }
 
-    <div class="about-image">
-      <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop" />
-    </div>
+          .category{
+            position:relative;
+            overflow:hidden;
+            border-radius:15px;
+            border:1px solid gold;
+            cursor:pointer;
+          }
 
-  </div>
+          .category img{
+            width:100%;
+            height:350px;
+            object-fit:cover;
+            transition:0.5s;
+          }
 
-</section>
-.categories{
-  padding:80px 40px;
-}
+          .category:hover img{
+            transform:scale(1.1);
+          }
 
-.categories h2{
-  text-align:center;
-  color:gold;
-  font-size:40px;
-  margin-bottom:40px;
-}
+          .category h3{
+            position:absolute;
+            bottom:20px;
+            left:20px;
+            color:white;
+            font-size:30px;
+            background:rgba(0,0,0,0.5);
+            padding:10px 20px;
+            border-radius:10px;
+          }
 
-.category-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:30px;
-}
+          footer{
+            text-align:center;
+            padding:40px;
+            border-top:1px solid gold;
+            margin-top:80px;
+            color:gold;
+          }
 
-.category{
-  position:relative;
-  overflow:hidden;
-  border-radius:15px;
-  border:1px solid gold;
-  cursor:pointer;
-}
-
-.category img{
-  width:100%;
-  height:350px;
-  object-fit:cover;
-  transition:0.5s;
-}
-
-.category:hover img{
-  transform:scale(1.1);
-}
-
-.category h3{
-  position:absolute;
-  bottom:20px;
-  left:20px;
-  color:white;
-  font-size:30px;
-  background:rgba(0,0,0,0.5);
-  padding:10px 20px;
-  border-radius:10px;
-}
-.about{
-  padding:100px 40px;
-}
-
-.about-content{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:50px;
-  align-items:center;
-}
-
-.about-text h2{
-  color:gold;
-  font-size:45px;
-}
-
-.about-text p{
-  width:100%;
-  line-height:1.8;
-}
-
-.about-image img{
-  width:100%;
-  border-radius:20px;
-  border:2px solid gold;
-}
         </style>
       </head>
 
@@ -283,37 +258,60 @@ footer{
           </div>
 
         </section>
-</section>
 
-<footer>
-<section class="categories">
+        <section class="about">
 
-  <h2>Shop By Category</h2>
+          <div class="about-content">
 
-  <div class="category-grid">
+            <div class="about-text">
+              <h2>About Pwani Pure</h2>
 
-    <div class="category">
-      <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?q=80&w=1200&auto=format&fit=crop" />
-      <h3>Skincare</h3>
-    </div>
+              <p>
+                Pwani Pure blends luxury skincare and fashion into one timeless experience.
+                Inspired by elegance, confidence, and coastal beauty, our collections are
+                crafted for modern individuals who appreciate sophistication and quality.
+              </p>
 
-    <div class="category">
-      <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=1200&auto=format&fit=crop" />
-      <h3>Fashion</h3>
-    </div>
+              <button>Discover More</button>
+            </div>
 
-    <div class="category">
-      <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=1200&auto=format&fit=crop" />
-      <h3>Accessories</h3>
-    </div>
+            <div class="about-image">
+              <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop" />
+            </div>
 
-  </div>
+          </div>
 
-</section>
-  © 2026 Pwani Pure — Luxury Skincare & Fashion
-</footer>
+        </section>
 
-</body>
+        <section class="categories">
+
+          <h2>Shop By Category</h2>
+
+          <div class="category-grid">
+
+            <div class="category">
+              <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?q=80&w=1200&auto=format&fit=crop" />
+              <h3>Skincare</h3>
+            </div>
+
+            <div class="category">
+              <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=1200&auto=format&fit=crop" />
+              <h3>Fashion</h3>
+            </div>
+
+            <div class="category">
+              <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=1200&auto=format&fit=crop" />
+              <h3>Accessories</h3>
+            </div>
+
+          </div>
+
+        </section>
+
+        <footer>
+          © 2026 Pwani Pure — Luxury Skincare & Fashion
+        </footer>
+
       </body>
     </html>
   `);
