@@ -273,7 +273,7 @@ app.get("/", (req, res) => {
 
 .newsletter-box input{
   padding:15px;
-  width:300px;
+  width:300px; 
   border:none;
   border-radius:10px;
   font-size:16px;
