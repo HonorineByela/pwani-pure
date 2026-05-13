@@ -201,7 +201,38 @@ app.get("/", (req, res) => {
             margin-top:80px;
             color:gold;
           }
+.newsletter{
+  padding:100px 40px;
+  text-align:center;
+}
 
+.newsletter h2{
+  color:gold;
+  font-size:45px;
+}
+
+.newsletter p{
+  width:60%;
+  margin:auto;
+  margin-top:20px;
+  margin-bottom:40px;
+  line-height:1.8;
+}
+
+.newsletter-box{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.newsletter-box input{
+  padding:15px;
+  width:300px;
+  border:none;
+  border-radius:10px;
+  font-size:16px;
+}
         </style>
       </head>
 
@@ -307,7 +338,21 @@ app.get("/", (req, res) => {
           </div>
 
         </section>
+<section class="newsletter">
 
+  <h2>Join The Pwani Pure World</h2>
+
+  <p>
+    Be the first to discover exclusive collections,
+    luxury skincare drops, and fashion releases.
+  </p>
+
+  <div class="newsletter-box">
+    <input type="email" placeholder="Enter your email" />
+    <button>Subscribe</button>
+  </div>
+
+</section>
         <footer>
           © 2026 Pwani Pure — Luxury Skincare & Fashion
         </footer>
