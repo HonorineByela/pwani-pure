@@ -132,7 +132,52 @@ footer{
   margin-top:80px;
   color:gold;
 }
+.categories{
+  padding:80px 40px;
+}
 
+.categories h2{
+  text-align:center;
+  color:gold;
+  font-size:40px;
+  margin-bottom:40px;
+}
+
+.category-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.category{
+  position:relative;
+  overflow:hidden;
+  border-radius:15px;
+  border:1px solid gold;
+  cursor:pointer;
+}
+
+.category img{
+  width:100%;
+  height:350px;
+  object-fit:cover;
+  transition:0.5s;
+}
+
+.category:hover img{
+  transform:scale(1.1);
+}
+
+.category h3{
+  position:absolute;
+  bottom:20px;
+  left:20px;
+  color:white;
+  font-size:30px;
+  background:rgba(0,0,0,0.5);
+  padding:10px 20px;
+  border-radius:10px;
+}
         </style>
       </head>
 
@@ -192,6 +237,30 @@ footer{
 </section>
 
 <footer>
+<section class="categories">
+
+  <h2>Shop By Category</h2>
+
+  <div class="category-grid">
+
+    <div class="category">
+      <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?q=80&w=1200&auto=format&fit=crop" />
+      <h3>Skincare</h3>
+    </div>
+
+    <div class="category">
+      <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=1200&auto=format&fit=crop" />
+      <h3>Fashion</h3>
+    </div>
+
+    <div class="category">
+      <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=1200&auto=format&fit=crop" />
+      <h3>Accessories</h3>
+    </div>
+
+  </div>
+
+</section>
   © 2026 Pwani Pure — Luxury Skincare & Fashion
 </footer>
 
