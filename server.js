@@ -6,7 +6,7 @@ const helmet = require("helmet");
 const csrf = require("csurf");
 const cookieParser = require("cookie-parser");
 
-const app = express(); 
+const app = express();
 
 // HOMEPAGE
 app.get("/", (req, res) => {
