@@ -106,6 +106,32 @@ app.get("/", (req, res) => {
           .card p{
             width:100%;
           }
+          .card{
+  transition:0.4s;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 25px gold;
+}
+
+button{
+  transition:0.3s;
+}
+
+button:hover{
+  background:white;
+  color:black;
+  box-shadow:0 0 20px gold;
+}
+
+footer{
+  text-align:center;
+  padding:40px;
+  border-top:1px solid gold;
+  margin-top:80px;
+  color:gold;
+}
 
         </style>
       </head>
@@ -163,7 +189,13 @@ app.get("/", (req, res) => {
           </div>
 
         </section>
+</section>
 
+<footer>
+  © 2026 Pwani Pure — Luxury Skincare & Fashion
+</footer>
+
+</body>
       </body>
     </html>
   `);
