@@ -1,4 +1,3 @@
-
 require("dotenv").config();
 
 const express = require("express");
@@ -8,6 +7,11 @@ const csrf = require("csurf");
 const cookieParser = require("cookie-parser");
 
 const app = express();
+
+// HOMEPAGE
+app.get("/", (req, res) => {
+  res.send("Pwani Pure is live ✨");
+});
 
 app.use(express.json());
 app.use(cookieParser());
@@ -40,39 +44,39 @@ const users = [
   }
 ];
 
-app.post("/api/check-role", (req,res)=>{
+app.post("/api/check-role", (req, res) => {
 
   const user = users.find(
     u => u.email === req.body.email
   );
 
-  if(!user){
+  if (!user) {
     return res.json({
-      success:false
+      success: false
     });
   }
 
   res.json({
-    success:true,
-    role:user.role
+    success: true,
+    role: user.role
   });
 });
 
 // MULTIPLE PRODUCT IMAGES
-app.post("/api/product-images", (req,res)=>{
+app.post("/api/product-images", (req, res) => {
 
   res.json({
-    success:true,
-    message:"Multiple image upload ready"
+    success: true,
+    message: "Multiple image upload ready"
   });
 });
 
 // PRODUCT VARIANTS
-app.post("/api/product-variants", (req,res)=>{
+app.post("/api/product-variants", (req, res) => {
 
   res.json({
-    success:true,
-    variants:[
+    success: true,
+    variants: [
       "Size",
       "Color",
       "Material"
@@ -81,19 +85,19 @@ app.post("/api/product-variants", (req,res)=>{
 });
 
 // STRIPE WEBHOOK PLACEHOLDER
-app.post("/webhook/stripe",(req,res)=>{
+app.post("/webhook/stripe", (req, res) => {
   console.log("Stripe webhook connected");
   res.sendStatus(200);
 });
 
 // MPESA / MIX PAYMENT PLACEHOLDER
-app.post("/api/mobile-payment",(req,res)=>{
+app.post("/api/mobile-payment", (req, res) => {
   res.json({
-    success:true,
-    message:"Tanzania mobile payment integration ready"
+    success: true,
+    message: "Tanzania mobile payment integration ready"
   });
 });
 
-app.listen(3000, ()=>{
+app.listen(3000, () => {
   console.log("Pwani Pure V11 running");
 });
