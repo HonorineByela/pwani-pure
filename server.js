@@ -18,18 +18,25 @@ app.get("/", (req, res) => {
         <style>
 
           body{
-            margin:0;
-            font-family:Arial;
-            background:black;
-            color:white;
-          }
+  margin:0;
+  font-family:Arial;
+  background:black;
+  color:white;
+  scroll-behavior:smooth;
+}
 
           nav{
-            display:flex;
-            justify-content:space-between;
-            padding:20px 40px;
-            border-bottom:1px solid gold;
-          }
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 40px;
+  border-bottom:1px solid rgba(255,215,0,0.3);
+  background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(10px);
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
 
           .logo{
             color:gold;
@@ -38,13 +45,18 @@ app.get("/", (req, res) => {
           }
 
           .hero{
-            height:90vh;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
-            text-align:center;
-          }
+  height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
+    url('https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1400&auto=format&fit=crop');
+  background-size:cover;
+  background-position:center;
+}
 
           h1{
             font-size:60px;
