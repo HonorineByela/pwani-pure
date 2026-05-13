@@ -132,6 +132,29 @@ footer{
   margin-top:80px;
   color:gold;
 }
+<section class="about">
+
+  <div class="about-content">
+
+    <div class="about-text">
+      <h2>About Pwani Pure</h2>
+
+      <p>
+        Pwani Pure blends luxury skincare and fashion into one timeless experience.
+        Inspired by elegance, confidence, and coastal beauty, our collections are
+        crafted for modern individuals who appreciate sophistication and quality.
+      </p>
+
+      <button>Discover More</button>
+    </div>
+
+    <div class="about-image">
+      <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop" />
+    </div>
+
+  </div>
+
+</section>
 .categories{
   padding:80px 40px;
 }
@@ -177,6 +200,32 @@ footer{
   background:rgba(0,0,0,0.5);
   padding:10px 20px;
   border-radius:10px;
+}
+.about{
+  padding:100px 40px;
+}
+
+.about-content{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:50px;
+  align-items:center;
+}
+
+.about-text h2{
+  color:gold;
+  font-size:45px;
+}
+
+.about-text p{
+  width:100%;
+  line-height:1.8;
+}
+
+.about-image img{
+  width:100%;
+  border-radius:20px;
+  border:2px solid gold;
 }
         </style>
       </head>
