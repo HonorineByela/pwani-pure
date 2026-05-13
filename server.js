@@ -196,7 +196,7 @@ footer{
 
         <section class="hero">
 
-          <h1>Luxury Redefined</h1>
+          <h1>Pure Beauty Pure You</h1>
 
           <p>
             Discover premium skincare and fashion crafted
