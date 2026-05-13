@@ -213,6 +213,7 @@ app.get("/", (req, res) => {
             margin-top:80px;
             color:gold;
           }
+          {
           <section class="testimonials">
 
   <h2>What Our Clients Say</h2>
