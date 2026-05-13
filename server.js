@@ -213,6 +213,39 @@ app.get("/", (req, res) => {
             margin-top:80px;
             color:gold;
           }
+          <section class="testimonials">
+
+  <h2>What Our Clients Say</h2>
+
+  <div class="testimonial-grid">
+
+    <div class="testimonial">
+      <p>
+        “Absolutely luxurious. The skincare products transformed my routine completely.”
+      </p>
+
+      <h3>— Sophia M.</h3>
+    </div>
+
+    <div class="testimonial">
+      <p>
+        “Elegant fashion and premium quality. Pwani Pure feels like a world-class brand.”
+      </p>
+
+      <h3>— Amelia K.</h3>
+    </div>
+
+    <div class="testimonial">
+      <p>
+        “The customer experience, packaging, and products are simply unmatched.”
+      </p>
+
+      <h3>— Nadia R.</h3>
+    </div>
+
+  </div>
+
+</section>
 .newsletter{
   padding:100px 40px;
   text-align:center;
@@ -249,6 +282,45 @@ app.get("/", (req, res) => {
   gap:20px;
   flex-wrap:wrap;
   justify-content:center;
+}
+.testimonials{
+  padding:100px 40px;
+  text-align:center;
+}
+
+.testimonials h2{
+  color:gold;
+  font-size:45px;
+  margin-bottom:50px;
+}
+
+.testimonial-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.testimonial{
+  background:#111;
+  border:1px solid gold;
+  border-radius:15px;
+  padding:30px;
+  transition:0.4s;
+}
+
+.testimonial:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 25px gold;
+}
+
+.testimonial p{
+  width:100%;
+  line-height:1.8;
+}
+
+.testimonial h3{
+  color:gold;
+  margin-top:20px;
 }
         </style>
       </head>
