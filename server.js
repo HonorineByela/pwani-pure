@@ -1,562 +1,610 @@
 require("dotenv").config();
 
 const express = require("express");
-const rateLimit = require("express-rate-limit");
 const helmet = require("helmet");
-const csrf = require("csurf");
-const cookieParser = require("cookie-parser");
+const rateLimit = require("express-rate-limit");
 
 const app = express();
 
-// HOMEPAGE
-app.get("/", (req, res) => {
-  res.send(`
-  <html>
-
-    <head>
-
-      <title>Pwani Pure</title>
-
-      <style>
-
-        body{
-          margin:0;
-          font-family:Arial;
-          background:black;
-          color:white;
-          scroll-behavior:smooth;
-        }
-
-        nav{
-          display:flex;
-          justify-content:space-between;
-          align-items:center;
-          padding:20px 40px;
-          border-bottom:1px solid rgba(255,215,0,0.3);
-          background:rgba(0,0,0,0.7);
-          backdrop-filter:blur(10px);
-          position:sticky;
-          top:0;
-          z-index:1000;
-        }
-
-        .logo{
-          color:gold;
-          font-size:30px;
-          font-weight:bold;
-        }
-
-        .nav-links{
-          display:flex;
-          gap:20px;
-          color:white;
-        }
-
-        .hero{
-          height:100vh;
-          display:flex;
-          flex-direction:column;
-          justify-content:center;
-          align-items:center;
-          text-align:center;
-          background:
-            linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
-            url('https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1400&auto=format&fit=crop');
-
-          background-size:cover;
-          background-position:center;
-        }
-
-        h1{
-          font-size:70px;
-          color:gold;
-          margin-bottom:20px;
-        }
-
-        p{
-          font-size:20px;
-          width:70%;
-          line-height:1.8;
-        }
-
-        button{
-          padding:15px 35px;
-          border:none;
-          background:gold;
-          color:black;
-          font-size:18px;
-          cursor:pointer;
-          border-radius:10px;
-          transition:0.3s;
-        }
-
-        button:hover{
-          background:white;
-          box-shadow:0 0 20px gold;
-        }
-
-        .hero-buttons{
-          display:flex;
-          gap:20px;
-          margin-top:30px;
-          flex-wrap:wrap;
-          justify-content:center;
-        }
-
-        .products{
-          padding:100px 40px;
-        }
-
-        .products h2{
-          text-align:center;
-          color:gold;
-          font-size:45px;
-          margin-bottom:50px;
-        }
-
-        .product-grid{
-          display:grid;
-          grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-          gap:30px;
-        }
-
-        .card{
-          background:#111;
-          border:1px solid gold;
-          border-radius:15px;
-          overflow:hidden;
-          text-align:center;
-          transition:0.4s;
-          padding-bottom:20px;
-        }
-
-        .card:hover{
-          transform:translateY(-10px);
-          box-shadow:0 0 25px gold;
-        }
-
-        .card img{
-          width:100%;
-          height:300px;
-          object-fit:cover;
-        }
-
-        .card h3{
-          color:gold;
-        }
-
-        .card p{
-          width:100%;
-        }
-
-        .about{
-          padding:100px 40px;
-        }
-
-        .about-content{
-          display:grid;
-          grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-          gap:50px;
-          align-items:center;
-        }
-
-        .about-text h2{
-          color:gold;
-          font-size:45px;
-        }
-
-        .about-text p{
-          width:100%;
-        }
-
-        .about-image img{
-          width:100%;
-          border-radius:20px;
-          border:2px solid gold;
-        }
-
-        .categories{
-          padding:100px 40px;
-        }
-
-        .categories h2{
-          text-align:center;
-          color:gold;
-          font-size:45px;
-          margin-bottom:50px;
-        }
-
-        .category-grid{
-          display:grid;
-          grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-          gap:30px;
-        }
-
-        .category{
-          position:relative;
-          overflow:hidden;
-          border-radius:15px;
-          border:1px solid gold;
-        }
-
-        .category img{
-          width:100%;
-          height:350px;
-          object-fit:cover;
-          transition:0.5s;
-        }
-
-        .category:hover img{
-          transform:scale(1.1);
-        }
-
-        .category h3{
-          position:absolute;
-          bottom:20px;
-          left:20px;
-          color:white;
-          background:rgba(0,0,0,0.5);
-          padding:10px 20px;
-          border-radius:10px;
-        }
-
-        .testimonials{
-          padding:100px 40px;
-          text-align:center;
-        }
-
-        .testimonials h2{
-          color:gold;
-          font-size:45px;
-          margin-bottom:50px;
-        }
-
-        .testimonial-grid{
-          display:grid;
-          grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-          gap:30px;
-        }
-
-        .testimonial{
-          background:#111;
-          border:1px solid gold;
-          border-radius:15px;
-          padding:30px;
-          transition:0.4s;
-        }
-
-        .testimonial:hover{
-          transform:translateY(-10px);
-          box-shadow:0 0 25px gold;
-        }
-
-        .testimonial p{
-          width:100%;
-        }
-
-        .testimonial h3{
-          color:gold;
-          margin-top:20px;
-        }
-
-        .newsletter{
-          padding:100px 40px;
-          text-align:center;
-        }
-
-        .newsletter h2{
-          color:gold;
-          font-size:45px;
-        }
-
-        .newsletter p{
-          width:60%;
-          margin:auto;
-          margin-top:20px;
-          margin-bottom:40px;
-        }
-
-        .newsletter-box{
-          display:flex;
-          justify-content:center;
-          gap:10px;
-          flex-wrap:wrap;
-        }
-
-        .newsletter-box input{
-          padding:15px;
-          width:300px;
-          border:none;
-          border-radius:10px;
-          font-size:16px;
-        }
-
-        footer{
-          text-align:center;
-          padding:40px;
-          border-top:1px solid gold;
-          color:gold;
-          margin-top:80px;
-        }
-
-      </style>
-
-    </head>
-
-    <body>
-
-      <nav>
-
-        <div class="logo">
-          Pwani Pure
-        </div>
-
-        <div class="nav-links">
-          <span>Home</span>
-          <span>Shop</span>
-          <span>Skincare</span>
-          <span>Fashion</span>
-          <span>🛒 Cart</span>
-        </div>
-
-      </nav>
-
-      <section class="hero">
-
-        <h1>Pure Beauty Pure You</h1>
-
-        <p>
-          Discover premium skincare and luxury fashion crafted
-          for elegance, confidence, and timeless beauty.
-        </p>
-
-        <div class="hero-buttons">
-          <button>Shop Now</button>
-          <button>View Collection</button>
-        </div>
-
-      </section>
-
-      <section class="products">
-
-        <h2>Featured Collection</h2>
-
-        <div class="product-grid">
-
-          <div class="card">
-            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop" />
-            <h3>Golden Glow Serum</h3>
-            <p>$45</p>
-          </div>
-
-          <div class="card">
-            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop" />
-            <h3>Luxury Silk Dress</h3>
-            <p>$120</p>
-          </div>
-
-          <div class="card">
-            <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop" />
-            <h3>Pure Essence Cream</h3>
-            <p>$60</p>
-          </div>
-
-        </div>
-
-      </section>
-
-      <section class="about">
-
-        <div class="about-content">
-
-          <div class="about-text">
-
-            <h2>About Pwani Pure</h2>
-
-            <p>
-              Pwani Pure blends luxury skincare and fashion into one timeless experience.
-              Inspired by elegance, confidence, and coastal beauty.
-            </p>
-
-            <button>Discover More</button>
-
-          </div>
-
-          <div class="about-image">
-            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop" />
-          </div>
-
-        </div>
-
-      </section>
-
-      <section class="categories">
-
-        <h2>Shop By Category</h2>
-
-        <div class="category-grid">
-
-          <div class="category">
-            <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?q=80&w=1200&auto=format&fit=crop" />
-            <h3>Skincare</h3>
-          </div>
-
-          <div class="category">
-            <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=1200&auto=format&fit=crop" />
-            <h3>Fashion</h3>
-          </div>
-
-          <div class="category">
-            <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=1200&auto=format&fit=crop" />
-            <h3>Accessories</h3>
-          </div>
-
-        </div>
-
-      </section>
-
-      <section class="testimonials">
-
-        <h2>What Our Clients Say</h2>
-
-        <div class="testimonial-grid">
-
-          <div class="testimonial">
-            <p>
-              “Absolutely luxurious. The skincare products transformed my routine completely.”
-            </p>
-            <h3>— Sophia M.</h3>
-          </div>
-
-          <div class="testimonial">
-            <p>
-              “Elegant fashion and premium quality. Pwani Pure feels like a world-class brand.”
-            </p>
-            <h3>— Amelia K.</h3>
-          </div>
-
-          <div class="testimonial">
-            <p>
-              “The customer experience and products are unmatched.”
-            </p>
-            <h3>— Nadia R.</h3>
-          </div>
-
-        </div>
-
-      </section>
-
-      <section class="newsletter">
-
-        <h2>Join The Pwani Pure World</h2>
-
-        <p>
-          Be the first to discover exclusive collections,
-          skincare drops, and luxury fashion releases.
-        </p>
-
-        <div class="newsletter-box">
-          <input type="email" placeholder="Enter your email" />
-          <button>Subscribe</button>
-        </div>
-
-      </section>
-
-      <footer>
-        © 2026 Pwani Pure — Luxury Skincare & Fashion
-      </footer>
-
-    </body>
-
-  </html>
-  `);
-});
-
-app.use(express.json());
-app.use(cookieParser());
 app.use(helmet());
 
-// RATE LIMITING
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100
+app.use(
+  rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+  })
+);
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send(`
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Pwani Pure</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins', sans-serif;
+}
+
+body{
+background:#000;
+color:white;
+overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+width:100%;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:fixed;
+top:0;
+left:0;
+z-index:1000;
+background:rgba(0,0,0,0.85);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(212,175,55,0.2);
+}
+
+.logo{
+font-size:32px;
+font-weight:700;
+color:#d4af37;
+letter-spacing:2px;
+}
+
+nav ul{
+display:flex;
+gap:35px;
+list-style:none;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+font-size:15px;
+transition:0.3s;
+}
+
+nav ul li a:hover{
+color:#d4af37;
+}
+
+.nav-buttons{
+display:flex;
+gap:15px;
+}
+
+.nav-buttons button{
+padding:10px 18px;
+border:none;
+cursor:pointer;
+font-weight:600;
+transition:0.3s;
+border-radius:30px;
+}
+
+.login-btn{
+background:transparent;
+border:1px solid #d4af37 !important;
+color:#d4af37;
+}
+
+.login-btn:hover{
+background:#d4af37;
+color:black;
+}
+
+.cart-btn{
+background:#d4af37;
+color:black;
+}
+
+.cart-btn:hover{
+transform:scale(1.05);
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:0 10%;
+background:
+linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
+url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1974&auto=format&fit=crop');
+background-size:cover;
+background-position:center;
+}
+
+.hero-content h1{
+font-size:70px;
+color:#d4af37;
+margin-bottom:20px;
+}
+
+.hero-content p{
+font-size:18px;
+max-width:700px;
+line-height:1.8;
+margin:auto;
+margin-bottom:35px;
+color:#ddd;
+}
+
+.hero-content button{
+padding:16px 40px;
+border:none;
+background:#d4af37;
+color:black;
+font-size:16px;
+font-weight:600;
+border-radius:40px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.hero-content button:hover{
+transform:scale(1.05);
+}
+
+/* SECTION TITLE */
+
+.section-title{
+text-align:center;
+font-size:42px;
+color:#d4af37;
+margin-bottom:60px;
+}
+
+/* PRODUCTS */
+
+.products{
+padding:120px 8%;
+background:#050505;
+}
+
+.product-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.product-card{
+background:#111;
+border-radius:20px;
+overflow:hidden;
+transition:0.4s;
+border:1px solid rgba(212,175,55,0.15);
+}
+
+.product-card:hover{
+transform:translateY(-10px);
+}
+
+.product-card img{
+width:100%;
+height:320px;
+object-fit:cover;
+}
+
+.product-info{
+padding:20px;
+}
+
+.product-info h3{
+margin-bottom:10px;
+font-size:22px;
+}
+
+.product-info p{
+color:#d4af37;
+font-size:20px;
+margin-bottom:15px;
+}
+
+.product-info button{
+width:100%;
+padding:12px;
+border:none;
+background:#d4af37;
+color:black;
+font-weight:600;
+border-radius:10px;
+cursor:pointer;
+}
+
+/* CATEGORIES */
+
+.categories{
+padding:120px 8%;
+background:black;
+}
+
+.category-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.category-card{
+height:350px;
+border-radius:20px;
+position:relative;
+overflow:hidden;
+cursor:pointer;
+}
+
+.category-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:0.5s;
+}
+
+.category-card:hover img{
+transform:scale(1.1);
+}
+
+.category-overlay{
+position:absolute;
+bottom:0;
+width:100%;
+padding:30px;
+background:linear-gradient(transparent, rgba(0,0,0,0.9));
+}
+
+.category-overlay h2{
+color:white;
+font-size:30px;
+}
+
+/* TESTIMONIALS */
+
+.testimonials{
+padding:120px 8%;
+background:#050505;
+}
+
+.testimonial-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+}
+
+.testimonial-card{
+background:#111;
+padding:35px;
+border-radius:20px;
+border:1px solid rgba(212,175,55,0.1);
+}
+
+.testimonial-card p{
+line-height:1.8;
+margin-bottom:20px;
+color:#ccc;
+}
+
+.testimonial-card h4{
+color:#d4af37;
+}
+
+/* NEWSLETTER */
+
+.newsletter{
+padding:120px 8%;
+text-align:center;
+background:black;
+}
+
+.newsletter h2{
+font-size:42px;
+color:#d4af37;
+margin-bottom:20px;
+}
+
+.newsletter p{
+max-width:700px;
+margin:auto;
+margin-bottom:35px;
+line-height:1.8;
+color:#ccc;
+}
+
+.newsletter form{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.newsletter input{
+padding:16px;
+width:350px;
+border:none;
+border-radius:40px;
+outline:none;
+}
+
+.newsletter button{
+padding:16px 35px;
+border:none;
+border-radius:40px;
+background:#d4af37;
+color:black;
+font-weight:600;
+cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+padding:40px 8%;
+border-top:1px solid rgba(212,175,55,0.15);
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:20px;
+background:#050505;
+}
+
+footer p{
+color:#aaa;
+}
+
+footer span{
+color:#d4af37;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.hero-content h1{
+font-size:48px;
+}
+
+nav ul{
+display:none;
+}
+
+.section-title{
+font-size:34px;
+}
+
+}
+
+@media(max-width:600px){
+
+.hero-content h1{
+font-size:38px;
+}
+
+.hero-content p{
+font-size:16px;
+}
+
+.newsletter input{
+width:100%;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">PWANI PURE</div>
+
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Shop</a></li>
+<li><a href="#">Skincare</a></li>
+<li><a href="#">Clothing</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+
+<div class="nav-buttons">
+<button class="login-btn">Login</button>
+<button class="cart-btn">Cart</button>
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>Luxury That Feels Pure</h1>
+
+<p>
+Discover premium skincare and timeless fashion designed
+to elevate confidence, beauty, and elegance.
+</p>
+
+<button>Shop Now</button>
+
+</div>
+
+</section>
+
+<!-- PRODUCTS -->
+
+<section class="products">
+
+<h2 class="section-title">Featured Products</h2>
+
+<div class="product-grid">
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1974&auto=format&fit=crop">
+<div class="product-info">
+<h3>Gold Glow Serum</h3>
+<p>$49</p>
+<button>Add To Cart</button>
+</div>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=1974&auto=format&fit=crop">
+<div class="product-info">
+<h3>Luxury Body Cream</h3>
+<p>$39</p>
+<button>Add To Cart</button>
+</div>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1974&auto=format&fit=crop">
+<div class="product-info">
+<h3>Elegant Dress</h3>
+<p>$89</p>
+<button>Add To Cart</button>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- CATEGORIES -->
+
+<section class="categories">
+
+<h2 class="section-title">Shop Categories</h2>
+
+<div class="category-grid">
+
+<div class="category-card">
+<img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1974&auto=format&fit=crop">
+<div class="category-overlay">
+<h2>Skincare</h2>
+</div>
+</div>
+
+<div class="category-card">
+<img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1974&auto=format&fit=crop">
+<div class="category-overlay">
+<h2>Fashion</h2>
+</div>
+</div>
+
+<div class="category-card">
+<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1974&auto=format&fit=crop">
+<div class="category-overlay">
+<h2>Accessories</h2>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- TESTIMONIALS -->
+
+<section class="testimonials">
+
+<h2 class="section-title">What Customers Say</h2>
+
+<div class="testimonial-grid">
+
+<div class="testimonial-card">
+<p>
+“Pwani Pure completely changed my skincare routine.
+The quality feels luxurious and authentic.”
+</p>
+<h4>- Sarah M.</h4>
+</div>
+
+<div class="testimonial-card">
+<p>
+“The fashion collection is elegant and classy.
+I receive compliments every time I wear it.”
+</p>
+<h4>- Vanessa K.</h4>
+</div>
+
+<div class="testimonial-card">
+<p>
+“Beautiful website, premium products, and amazing service.”
+</p>
+<h4>- Diana T.</h4>
+</div>
+
+</div>
+
+</section>
+
+<!-- NEWSLETTER -->
+
+<section class="newsletter">
+
+<h2>Join The Pwani Pure Community</h2>
+
+<p>
+Subscribe to receive exclusive offers, luxury skincare tips,
+and early access to new collections.
+</p>
+
+<form>
+
+<input type="email" placeholder="Enter your email">
+
+<button>Subscribe</button>
+
+</form>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>© 2026 <span>Pwani Pure</span>. All Rights Reserved.</p>
+
+<p>Luxury Skincare & Fashion Brand</p>
+
+</footer>
+
+</body>
+</html>
+
+`);
 });
 
-app.use(limiter);
+const PORT = process.env.PORT || 3000;
 
-// CSRF PROTECTION
-const csrfProtection = csrf({ cookie: true });
-
-app.get("/api/csrf-token", csrfProtection, (req, res) => {
-  res.json({ csrfToken: req.csrfToken() });
-});
-
-// ROLE SYSTEM
-const users = [
-  {
-    email: "admin@pwanipure.com",
-    role: "admin"
-  },
-  {
-    email: "customer@gmail.com",
-    role: "customer"
-  }
-];
-
-app.post("/api/check-role", (req, res) => {
-
-  const user = users.find(
-    u => u.email === req.body.email
-  );
-
-  if (!user) {
-    return res.json({
-      success: false
-    });
-  }
-
-  res.json({
-    success: true,
-    role: user.role
-  });
-});
-
-// MULTIPLE PRODUCT IMAGES
-app.post("/api/product-images", (req, res) => {
-
-  res.json({
-    success: true,
-    message: "Multiple image upload ready"
-  });
-});
-
-// PRODUCT VARIANTS
-app.post("/api/product-variants", (req, res) => {
-
-  res.json({
-    success: true,
-    variants: [
-      "Size",
-      "Color",
-      "Material"
-    ]
-  });
-});
-
-// STRIPE WEBHOOK PLACEHOLDER
-app.post("/webhook/stripe", (req, res) => {
-  console.log("Stripe webhook connected");
-  res.sendStatus(200);
-});
-
-// MPESA / MIX PAYMENT PLACEHOLDER
-app.post("/api/mobile-payment", (req, res) => {
-  res.json({
-    success: true,
-    message: "Tanzania mobile payment integration ready"
-  });
-});
-
-app.listen(3000, () => {
-  console.log("Pwani Pure V11 running");
+app.listen(PORT, () => {
+  console.log(\`Server running on port \${PORT}\`);
 });
