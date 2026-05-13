@@ -10,7 +10,90 @@ const app = express();
 
 // HOMEPAGE
 app.get("/", (req, res) => {
-  res.send("Pwani Pure is live ✨");
+  res.send(`
+    <html>
+      <head>
+        <title>Pwani Pure</title>
+        <style>
+          body{
+            margin:0;
+            font-family:Arial;
+            background:black;
+            color:white;
+          }
+
+          nav{
+            display:flex;
+            justify-content:space-between;
+            padding:20px 40px;
+            border-bottom:1px solid gold;
+          }
+
+          .logo{
+            color:gold;
+            font-size:28px;
+            font-weight:bold;
+          }
+
+          .hero{
+            height:90vh;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+          }
+
+          h1{
+            font-size:60px;
+            color:gold;
+          }
+
+          p{
+            font-size:20px;
+            width:70%;
+          }
+
+          button{
+            margin-top:20px;
+            padding:15px 35px;
+            border:none;
+            background:gold;
+            color:black;
+            font-size:18px;
+            cursor:pointer;
+            border-radius:10px;
+          }
+        </style>
+      </head>
+
+      <body>
+
+        <nav>
+          <div class="logo">Pwani Pure</div>
+
+          <div>
+            Home |
+            Shop |
+            Skincare |
+            Fashion
+          </div>
+        </nav>
+
+        <section class="hero">
+          <h1>Luxury Redefined</h1>
+
+          <p>
+            Discover premium skincare and fashion crafted
+            for elegance, confidence, and timeless beauty.
+          </p>
+
+          <button>Shop Now</button>
+        </section>
+
+      </body>
+    </html>
+  `);
 });
 
 app.use(express.json());
