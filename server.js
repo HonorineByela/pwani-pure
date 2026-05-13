@@ -244,6 +244,11 @@ app.get("/", (req, res) => {
   border:none;
   border-radius:10px;
   font-size:16px;
+}.hero-buttons{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  justify-content:center;
 }
         </style>
       </head>
@@ -254,10 +259,11 @@ app.get("/", (req, res) => {
           <div class="logo">Pwani Pure</div>
 
           <div>
-            Home |
-            Shop |
-            Skincare |
-            Fashion
+          Home |
+Shop |
+Skincare |
+Fashion |
+🛒 Cart
           </div>
         </nav>
 
@@ -270,7 +276,10 @@ app.get("/", (req, res) => {
             for elegance, confidence, and timeless beauty.
           </p>
 
-          <button>Shop Now</button>
+          <div class="hero-buttons">
+  <button>Shop Now</button>
+  <button>View Collection</button>
+</div>
 
         </section>
 
