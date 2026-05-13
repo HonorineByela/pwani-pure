@@ -90,7 +90,81 @@ app.get("/", (req, res) => {
 
           <button>Shop Now</button>
         </section>
+</section>
 
+<section class="products">
+
+  <h2>Featured Collection</h2>
+
+  <div class="product-grid">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop" />
+      <h3>Golden Glow Serum</h3>
+      <p>$45</p>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop" />
+      <h3>Luxury Silk Dress</h3>
+      <p>$120</p>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop" />
+      <h3>Pure Essence Cream</h3>
+      <p>$60</p>
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+
+.products{
+  padding:80px 40px;
+}
+
+.products h2{
+  text-align:center;
+  color:gold;
+  margin-bottom:40px;
+  font-size:40px;
+}
+
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:#111;
+  border:1px solid gold;
+  border-radius:15px;
+  overflow:hidden;
+  text-align:center;
+  padding-bottom:20px;
+}
+
+.card img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+}
+
+.card h3{
+  color:gold;
+}
+
+.card p{
+  width:100%;
+}
+
+</style>
+
+</body>
       </body>
     </html>
   `);
