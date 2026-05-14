@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Pwani Pure | Register</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    width:100%;
+    min-height:100vh;
+    background:black;
+    overflow-x:hidden;
+}
+
+/* MAIN CONTAINER */
+
+.register-container{
+    width:100%;
+    min-height:100vh;
+    display:flex;
+}
+
+/* LEFT SIDE */
+
+.left-side{
+    width:50%;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    background:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7)),
+    url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop');
+    background-size:cover;
+    background-position:center;
+}
+
+/* GOLD GLOW */
+
+.left-side::before{
+    content:'';
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:rgba(212,175,55,0.18);
+    border-radius:50%;
+    filter:blur(120px);
+    animation:glowMove 8s ease-in-out infinite alternate;
+}
+
+@keyframes glowMove{
+    from{
+        transform:translate(-50px,-50px);
+    }
+    to{
+        transform:translate(50px,50px);
+    }
+}
+
+.brand-content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    color:white;
+    padding:40px;
+}
+
+.brand-content h1{
+    font-size:4rem;
+    font-weight:700;
+    letter-spacing:4px;
+    margin-bottom:20px;
+}
+
+.brand-content p{
+    font-size:1.1rem;
+    color:#e0e0e0;
+    max-width:500px;
+    line-height:1.8;
+}
+
+/* RIGHT SIDE */
+
+.right-side{
+    width:50%;
+    background:#050505;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+    position:relative;
+}
+
+/* FORM BOX */
+
+.form-box{
+    width:100%;
+    max-width:450px;
+    animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.form-box h2{
+    color:white;
+    font-size:2.5rem;
+    margin-bottom:10px;
+}
+
+.form-box .subtitle{
+    color:#bdbdbd;
+    margin-bottom:40px;
+    font-size:0.95rem;
+}
+
+/* INPUTS */
+
+.input-group{
+    margin-bottom:22px;
+}
+
+.input-group label{
+    display:block;
+    color:#d4af37;
+    margin-bottom:8px;
+    font-size:0.92rem;
+}
+
+.input-group input{
+    width:100%;
+    padding:16px;
+    border:none;
+    outline:none;
+    background:#111;
+    border:1px solid #222;
+    color:white;
+    border-radius:12px;
+    font-size:1rem;
+    transition:0.3s;
+}
+
+.input-group input:focus{
+    border-color:#d4af37;
+    box-shadow:0 0 15px rgba(212,175,55,0.25);
+}
+
+/* PASSWORD WRAPPER */
+
+.password-wrapper{
+    position:relative;
+}
+
+.toggle-password{
+    position:absolute;
+    right:18px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#999;
+    cursor:pointer;
+    font-size:0.9rem;
+}
+
+/* BUTTON */
+
+.register-btn{
+    width:100%;
+    padding:17px;
+    border:none;
+    border-radius:14px;
+    background:#d4af37;
+    color:black;
+    font-size:1rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.4s;
+    margin-top:10px;
+}
+
+.register-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 30px rgba(212,175,55,0.35);
+}
+
+/* FOOTER */
+
+.form-footer{
+    text-align:center;
+    margin-top:28px;
+    color:#bdbdbd;
+}
+
+.form-footer a{
+    color:#d4af37;
+    text-decoration:none;
+    font-weight:500;
+}
+
+.form-footer a:hover{
+    text-decoration:underline;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:950px){
+
+    .register-container{
+        flex-direction:column;
+    }
+
+    .left-side{
+        width:100%;
+        min-height:40vh;
+    }
+
+    .right-side{
+        width:100%;
+        min-height:60vh;
+    }
+
+    .brand-content h1{
+        font-size:2.8rem;
+    }
+}
+
+@media(max-width:500px){
+
+    .form-box h2{
+        font-size:2rem;
+    }
+
+    .brand-content p{
+        font-size:0.95rem;
+    }
+
+    .right-side{
+        padding:25px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="register-container">
+
+    <!-- LEFT SIDE -->
+
+    <div class="left-side">
+
+        <div class="brand-content">
+            <h1>PWANI PURE</h1>
+
+            <p>
+                Luxury skincare and fashion crafted for elegance,
+                confidence, and timeless beauty.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+
+    <div class="right-side">
+
+        <div class="form-box">
+
+            <h2>Create Account</h2>
+
+            <p class="subtitle">
+                Join the world of luxury and timeless beauty.
+            </p>
+
+            <form>
+
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="Enter your full name">
+                </div>
+
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="Enter your email">
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+
+                    <div class="password-wrapper">
+                        <input type="password" id="password" placeholder="Create password">
+
+                        <span class="toggle-password" onclick="togglePassword('password', this)">
+                            Show
+                        </span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Confirm Password</label>
+
+                    <div class="password-wrapper">
+                        <input type="password" id="confirmPassword" placeholder="Confirm password">
+
+                        <span class="toggle-password" onclick="togglePassword('confirmPassword', this)">
+                            Show
+                        </span>
+                    </div>
+                </div>
+
+                <button class="register-btn">
+                    Create Account
+                </button>
+
+            </form>
+
+            <div class="form-footer">
+                Already have an account?
+                <a href="/login">Sign In</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function togglePassword(id, element){
+
+    const input = document.getElementById(id);
+
+    if(input.type === "password"){
+        input.type = "text";
+        element.innerText = "Hide";
+    }else{
+        input.type = "password";
+        element.innerText = "Show";
+    }
+}
+
+</script>
+
+</body>
+</html>
