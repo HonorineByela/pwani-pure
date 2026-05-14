@@ -27,7 +27,20 @@
       padding:20px;
       border-bottom:1px solid gold;
     }
+.nav-links{
+  display:flex;
+  gap:20px;
+}
 
+.nav-links a{
+  color:white;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.nav-links a:hover{
+  color:gold;
+}
     .logo{
       color:gold;
       font-size:28px;
@@ -76,8 +89,18 @@
 <body>
 
   <nav>
-    <div class="logo">Pwani Pure</div>
-  </nav>
+
+  <div class="logo">Pwani Pure</div>
+
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#">Shop</a>
+    <a href="#">Skincare</a>
+    <a href="#">Fashion</a>
+    <a href="#">Contact</a>
+  </div>
+
+</nav>
 
   <section class="hero">
     <h1>Luxury Beauty & Fashion</h1>
