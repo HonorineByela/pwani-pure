@@ -10,7 +10,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -19,6 +19,7 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Poppins', sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
@@ -27,11 +28,57 @@ color:white;
 overflow-x:hidden;
 }
 
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+background:#d4af37;
+border-radius:20px;
+}
+
+/* BACKGROUND GLOW */
+
+.bg-glow{
+position:fixed;
+width:600px;
+height:600px;
+background:rgba(212,175,55,0.08);
+filter:blur(120px);
+border-radius:50%;
+z-index:-1;
+animation:floatGlow 8s infinite alternate;
+}
+
+.bg-glow.one{
+top:-150px;
+left:-100px;
+}
+
+.bg-glow.two{
+bottom:-150px;
+right:-100px;
+}
+
+@keyframes floatGlow{
+
+from{
+transform:translateY(0px) translateX(0px);
+}
+
+to{
+transform:translateY(40px) translateX(30px);
+}
+
+}
+
 /* NAVBAR */
 
 nav{
 width:100%;
-padding:20px 8%;
+padding:22px 8%;
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -39,16 +86,16 @@ position:fixed;
 top:0;
 left:0;
 z-index:1000;
-background:rgba(0,0,0,0.85);
-backdrop-filter:blur(10px);
-border-bottom:1px solid rgba(212,175,55,0.2);
+background:rgba(0,0,0,0.72);
+backdrop-filter:blur(14px);
+border-bottom:1px solid rgba(212,175,55,0.18);
 }
 
 .logo{
-font-size:32px;
-font-weight:700;
+font-size:34px;
+font-weight:800;
 color:#d4af37;
-letter-spacing:2px;
+letter-spacing:3px;
 }
 
 nav ul{
@@ -62,165 +109,217 @@ text-decoration:none;
 color:white;
 font-size:15px;
 transition:0.3s;
+position:relative;
+}
+
+nav ul li a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-6px;
+width:0%;
+height:2px;
+background:#d4af37;
+transition:0.3s;
+}
+
+nav ul li a:hover::after{
+width:100%;
 }
 
 nav ul li a:hover{
 color:#d4af37;
 }
 
-.nav-buttons{
+.nav-right{
 display:flex;
+align-items:center;
 gap:15px;
 }
 
-.nav-buttons button{
-padding:10px 18px;
-border:none;
+.icon-btn{
+width:42px;
+height:42px;
+border-radius:50%;
+border:1px solid rgba(212,175,55,0.3);
+background:rgba(255,255,255,0.03);
+color:#d4af37;
 cursor:pointer;
-font-weight:600;
+font-size:16px;
 transition:0.3s;
-border-radius:30px;
+}
+
+.icon-btn:hover{
+background:#d4af37;
+color:black;
+transform:translateY(-3px);
 }
 
 .login-btn{
-background:transparent;
-border:1px solid #d4af37;
-color:#d4af37;
+padding:12px 22px;
+border:none;
+border-radius:30px;
+background:#d4af37;
+color:black;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
 }
 
 .login-btn:hover{
-background:#d4af37;
-color:black;
-}
-
-.cart-btn{
-background:#d4af37;
-color:black;
-}
-
-.cart-btn:hover{
-transform:scale(1.05);
+transform:translateY(-3px);
+box-shadow:0 10px 25px rgba(212,175,55,0.35);
 }
 
 /* HERO */
 
 .hero{
-height:100vh;
+min-height:100vh;
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
 text-align:center;
-padding:0 10%;
+padding:140px 10% 80px;
+
 background:
-linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
+linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.82)),
 url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1974&auto=format&fit=crop');
+
 background-size:cover;
 background-position:center;
+background-attachment:fixed;
+}
+
+.hero-content{
+animation:fadeUp 1.5s ease;
 }
 
 .hero-content h1{
-font-size:70px;
+font-size:78px;
+line-height:1.1;
+margin-bottom:25px;
 color:#d4af37;
-margin-bottom:20px;
+text-shadow:0 0 30px rgba(212,175,55,0.3);
 }
 
 .hero-content p{
-font-size:18px;
-max-width:700px;
-line-height:1.8;
+max-width:760px;
 margin:auto;
-margin-bottom:35px;
+font-size:18px;
+line-height:1.9;
 color:#ddd;
+margin-bottom:40px;
 }
 
-.hero-content button{
-padding:16px 40px;
+.hero-buttons{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.primary-btn{
+padding:16px 38px;
 border:none;
+border-radius:40px;
 background:#d4af37;
 color:black;
-font-size:16px;
-font-weight:600;
-border-radius:40px;
+font-weight:700;
 cursor:pointer;
 transition:0.3s;
+font-size:15px;
 }
 
-.hero-content button:hover{
-transform:scale(1.05);
+.primary-btn:hover{
+transform:translateY(-5px);
+box-shadow:0 15px 35px rgba(212,175,55,0.35);
 }
 
-/* SECTION TITLE */
+.secondary-btn{
+padding:16px 38px;
+border-radius:40px;
+background:transparent;
+border:1px solid #d4af37;
+color:#d4af37;
+font-weight:700;
+cursor:pointer;
+transition:0.3s;
+font-size:15px;
+}
+
+.secondary-btn:hover{
+background:#d4af37;
+color:black;
+}
+
+/* SECTION */
+
+section{
+padding:120px 8%;
+}
 
 .section-title{
 text-align:center;
-font-size:42px;
+font-size:48px;
 color:#d4af37;
-margin-bottom:60px;
+margin-bottom:70px;
 }
 
 /* PRODUCTS */
 
-.products{
-padding:120px 8%;
-background:#050505;
-}
-
 .product-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:35px;
 }
 
 .product-card{
-background:#111;
-border-radius:20px;
-overflow:hidden;
-transition:0.4s;
+background:rgba(255,255,255,0.03);
 border:1px solid rgba(212,175,55,0.15);
+border-radius:24px;
+overflow:hidden;
+backdrop-filter:blur(10px);
+transition:0.4s;
 }
 
 .product-card:hover{
-transform:translateY(-10px);
+transform:translateY(-12px);
+box-shadow:0 20px 40px rgba(212,175,55,0.12);
 }
 
 .product-card img{
 width:100%;
-height:320px;
+height:340px;
 object-fit:cover;
 }
 
 .product-info{
-padding:20px;
+padding:25px;
 }
 
 .product-info h3{
-margin-bottom:10px;
-font-size:22px;
+font-size:24px;
+margin-bottom:12px;
 }
 
 .product-info p{
-color:#d4af37;
 font-size:20px;
-margin-bottom:15px;
+color:#d4af37;
+margin-bottom:18px;
 }
 
 .product-info button{
 width:100%;
-padding:12px;
+padding:14px;
 border:none;
+border-radius:12px;
 background:#d4af37;
 color:black;
-font-weight:600;
-border-radius:10px;
+font-weight:700;
 cursor:pointer;
 }
 
 /* CATEGORIES */
-
-.categories{
-padding:120px 8%;
-background:black;
-}
 
 .category-grid{
 display:grid;
@@ -229,10 +328,10 @@ gap:30px;
 }
 
 .category-card{
-height:350px;
-border-radius:20px;
 position:relative;
+height:420px;
 overflow:hidden;
+border-radius:24px;
 cursor:pointer;
 }
 
@@ -240,7 +339,7 @@ cursor:pointer;
 width:100%;
 height:100%;
 object-fit:cover;
-transition:0.5s;
+transition:0.6s;
 }
 
 .category-card:hover img{
@@ -251,21 +350,15 @@ transform:scale(1.1);
 position:absolute;
 bottom:0;
 width:100%;
-padding:30px;
-background:linear-gradient(transparent, rgba(0,0,0,0.9));
+padding:35px;
+background:linear-gradient(transparent, rgba(0,0,0,0.95));
 }
 
 .category-overlay h2{
-color:white;
-font-size:30px;
+font-size:34px;
 }
 
 /* TESTIMONIALS */
-
-.testimonials{
-padding:120px 8%;
-background:#050505;
-}
 
 .testimonial-grid{
 display:grid;
@@ -274,16 +367,17 @@ gap:30px;
 }
 
 .testimonial-card{
-background:#111;
-padding:35px;
-border-radius:20px;
-border:1px solid rgba(212,175,55,0.1);
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(212,175,55,0.12);
+padding:40px;
+border-radius:24px;
+backdrop-filter:blur(10px);
 }
 
 .testimonial-card p{
-line-height:1.8;
+line-height:1.9;
+color:#ddd;
 margin-bottom:20px;
-color:#ccc;
 }
 
 .testimonial-card h4{
@@ -293,63 +387,54 @@ color:#d4af37;
 /* NEWSLETTER */
 
 .newsletter{
-padding:120px 8%;
 text-align:center;
-background:black;
-}
-
-.newsletter h2{
-font-size:42px;
-color:#d4af37;
-margin-bottom:20px;
 }
 
 .newsletter p{
 max-width:700px;
 margin:auto;
-margin-bottom:35px;
-line-height:1.8;
+line-height:1.9;
 color:#ccc;
+margin-bottom:35px;
 }
 
-.newsletter form{
+.newsletter-form{
 display:flex;
 justify-content:center;
 gap:15px;
 flex-wrap:wrap;
 }
 
-.newsletter input{
-padding:16px;
-width:350px;
+.newsletter-form input{
+width:360px;
+padding:17px;
 border:none;
-border-radius:40px;
 outline:none;
+border-radius:40px;
+background:#111;
+color:white;
+border:1px solid rgba(212,175,55,0.15);
 }
 
-.newsletter button{
-padding:16px 35px;
+.newsletter-form button{
+padding:17px 35px;
 border:none;
 border-radius:40px;
 background:#d4af37;
 color:black;
-font-weight:600;
+font-weight:700;
 cursor:pointer;
 }
 
 /* FOOTER */
 
 footer{
-padding:40px 8%;
-border-top:1px solid rgba(212,175,55,0.15);
+padding:45px 8%;
+border-top:1px solid rgba(212,175,55,0.12);
 display:flex;
 justify-content:space-between;
 flex-wrap:wrap;
 gap:20px;
-background:#050505;
-}
-
-footer p{
 color:#aaa;
 }
 
@@ -357,35 +442,55 @@ footer span{
 color:#d4af37;
 }
 
+/* ANIMATIONS */
+
+@keyframes fadeUp{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
 /* RESPONSIVE */
 
-@media(max-width:900px){
-
-.hero-content h1{
-font-size:48px;
-}
+@media(max-width:1000px){
 
 nav ul{
 display:none;
 }
 
-.section-title{
-font-size:34px;
+.hero-content h1{
+font-size:56px;
 }
 
 }
 
-@media(max-width:600px){
+@media(max-width:700px){
 
 .hero-content h1{
-font-size:38px;
+font-size:42px;
 }
 
 .hero-content p{
 font-size:16px;
 }
 
-.newsletter input{
+.section-title{
+font-size:36px;
+}
+
+.logo{
+font-size:26px;
+}
+
+.newsletter-form input{
 width:100%;
 }
 
@@ -397,6 +502,9 @@ width:100%;
 
 <body>
 
+<div class="bg-glow one"></div>
+<div class="bg-glow two"></div>
+
 <nav>
 
 <div class="logo">PWANI PURE</div>
@@ -405,13 +513,17 @@ width:100%;
 <li><a href="#">Home</a></li>
 <li><a href="#">Shop</a></li>
 <li><a href="#">Skincare</a></li>
-<li><a href="#">Clothing</a></li>
+<li><a href="#">Fashion</a></li>
+<li><a href="#">Collections</a></li>
 <li><a href="#">Contact</a></li>
 </ul>
 
-<div class="nav-buttons">
+<div class="nav-right">
+
+<button class="icon-btn">♡</button>
+<button class="icon-btn">🛒</button>
 <button class="login-btn">Login</button>
-<button class="cart-btn">Cart</button>
+
 </div>
 
 </nav>
@@ -423,111 +535,168 @@ width:100%;
 <h1>Luxury That Feels Pure</h1>
 
 <p>
-Discover premium skincare and timeless fashion designed
-to elevate confidence, beauty, and elegance.
+Discover premium skincare, luxury fashion,
+and timeless elegance crafted for confidence,
+beauty, and sophistication.
 </p>
 
-<button>Shop Now</button>
+<div class="hero-buttons">
+
+<button class="primary-btn">
+Shop Now
+</button>
+
+<button class="secondary-btn">
+Explore Collection
+</button>
+
+</div>
 
 </div>
 
 </section>
 
-<section class="products">
+<section>
 
-<h2 class="section-title">Featured Products</h2>
+<h2 class="section-title">
+Featured Products
+</h2>
 
 <div class="product-grid">
 
 <div class="product-card">
+
 <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1974&auto=format&fit=crop">
+
 <div class="product-info">
+
 <h3>Gold Glow Serum</h3>
+
 <p>$49</p>
+
 <button>Add To Cart</button>
+
 </div>
+
 </div>
 
 <div class="product-card">
+
 <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=1974&auto=format&fit=crop">
+
 <div class="product-info">
+
 <h3>Luxury Body Cream</h3>
+
 <p>$39</p>
+
 <button>Add To Cart</button>
+
 </div>
+
 </div>
 
 <div class="product-card">
+
 <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1974&auto=format&fit=crop">
+
 <div class="product-info">
+
 <h3>Elegant Dress</h3>
+
 <p>$89</p>
+
 <button>Add To Cart</button>
+
 </div>
+
 </div>
 
 </div>
 
 </section>
 
-<section class="categories">
+<section>
 
-<h2 class="section-title">Shop Categories</h2>
+<h2 class="section-title">
+Shop Categories
+</h2>
 
 <div class="category-grid">
 
 <div class="category-card">
+
 <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1974&auto=format&fit=crop">
+
 <div class="category-overlay">
 <h2>Skincare</h2>
 </div>
+
 </div>
 
 <div class="category-card">
+
 <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1974&auto=format&fit=crop">
+
 <div class="category-overlay">
 <h2>Fashion</h2>
 </div>
+
 </div>
 
 <div class="category-card">
+
 <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1974&auto=format&fit=crop">
+
 <div class="category-overlay">
 <h2>Accessories</h2>
 </div>
+
 </div>
 
 </div>
 
 </section>
 
-<section class="testimonials">
+<section>
 
-<h2 class="section-title">What Customers Say</h2>
+<h2 class="section-title">
+What Customers Say
+</h2>
 
 <div class="testimonial-grid">
 
 <div class="testimonial-card">
+
 <p>
-“Pwani Pure completely changed my skincare routine.
-The quality feels luxurious and authentic.”
+“Pwani Pure completely transformed my skincare routine.
+Everything feels premium and luxurious.”
 </p>
+
 <h4>- Sarah M.</h4>
+
 </div>
 
 <div class="testimonial-card">
+
 <p>
-“The fashion collection is elegant and classy.
-I receive compliments every time I wear it.”
+“The clothing collection is elegant, classy,
+and beautifully designed.”
 </p>
+
 <h4>- Vanessa K.</h4>
+
 </div>
 
 <div class="testimonial-card">
+
 <p>
-“Beautiful website, premium products, and amazing service.”
+“Beautiful website, premium products,
+and excellent customer service.”
 </p>
+
 <h4>- Diana T.</h4>
+
 </div>
 
 </div>
@@ -536,28 +705,38 @@ I receive compliments every time I wear it.”
 
 <section class="newsletter">
 
-<h2>Join The Pwani Pure Community</h2>
+<h2 class="section-title">
+Join The Pwani Pure Community
+</h2>
 
 <p>
-Subscribe to receive exclusive offers, luxury skincare tips,
-and early access to new collections.
+Subscribe for exclusive offers,
+new collections, skincare tips,
+and luxury updates.
 </p>
 
-<form>
+<div class="newsletter-form">
 
 <input type="email" placeholder="Enter your email">
 
-<button>Subscribe</button>
+<button>
+Subscribe
+</button>
 
-</form>
+</div>
 
 </section>
 
 <footer>
 
-<p>© 2026 <span>Pwani Pure</span>. All Rights Reserved.</p>
+<p>
+© 2026 <span>Pwani Pure</span>.
+All Rights Reserved.
+</p>
 
-<p>Luxury Skincare & Fashion Brand</p>
+<p>
+Luxury Skincare & Fashion Brand
+</p>
 
 </footer>
 
