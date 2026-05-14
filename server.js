@@ -6,6 +6,8 @@ const rateLimit = require("express-rate-limit");
 
 const app = express();
 
+/* SECURITY */
+
 app.use(helmet());
 
 app.use(
@@ -15,12 +17,15 @@ app.use(
   })
 );
 
+/* BODY PARSER */
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+/* HOME PAGE */
+
 app.get("/", (req, res) => {
   res.send(`
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,6 +37,7 @@ app.get("/", (req, res) => {
 <title>Pwani Pure</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -106,7 +112,7 @@ border-radius:30px;
 
 .login-btn{
 background:transparent;
-border:1px solid #d4af37 !important;
+border:1px solid #d4af37;
 color:#d4af37;
 }
 
@@ -419,8 +425,6 @@ width:100%;
 
 <body>
 
-<!-- NAVBAR -->
-
 <nav>
 
 <div class="logo">PWANI PURE</div>
@@ -440,8 +444,6 @@ width:100%;
 
 </nav>
 
-<!-- HERO -->
-
 <section class="hero">
 
 <div class="hero-content">
@@ -458,8 +460,6 @@ to elevate confidence, beauty, and elegance.
 </div>
 
 </section>
-
-<!-- PRODUCTS -->
 
 <section class="products">
 
@@ -498,8 +498,6 @@ to elevate confidence, beauty, and elegance.
 
 </section>
 
-<!-- CATEGORIES -->
-
 <section class="categories">
 
 <h2 class="section-title">Shop Categories</h2>
@@ -530,8 +528,6 @@ to elevate confidence, beauty, and elegance.
 </div>
 
 </section>
-
-<!-- TESTIMONIALS -->
 
 <section class="testimonials">
 
@@ -566,8 +562,6 @@ I receive compliments every time I wear it.”
 
 </section>
 
-<!-- NEWSLETTER -->
-
 <section class="newsletter">
 
 <h2>Join The Pwani Pure Community</h2>
@@ -587,8 +581,6 @@ and early access to new collections.
 
 </section>
 
-<!-- FOOTER -->
-
 <footer>
 
 <p>© 2026 <span>Pwani Pure</span>. All Rights Reserved.</p>
@@ -599,9 +591,10 @@ and early access to new collections.
 
 </body>
 </html>
-
-`);
+  `);
 });
+
+/* SERVER */
 
 const PORT = process.env.PORT || 3000;
 
