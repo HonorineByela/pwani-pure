@@ -2,799 +2,518 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Pwani Pure | Luxury Skincare & Fashion</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    body{
-      background:#000;
-      color:white;
-      font-family:'Poppins', sans-serif;
-      overflow-x:hidden;
-      scroll-behavior:smooth;
-    }
-
-    ::selection{
-      background:gold;
-      color:black;
-    }
-
-    /* SCROLLBAR */
-
-    ::-webkit-scrollbar{
-      width:8px;
-    }
-
-    ::-webkit-scrollbar-track{
-      background:black;
-    }
-
-    ::-webkit-scrollbar-thumb{
-      background:gold;
-      border-radius:10px;
-    }
-
-    /* NAVBAR */
-
-    nav{
-      width:100%;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:25px 7%;
-      position:fixed;
-      top:0;
-      left:0;
-      z-index:1000;
-      backdrop-filter:blur(15px);
-      background:rgba(0,0,0,0.45);
-      border-bottom:1px solid rgba(255,215,0,0.2);
-    }
-
-    .logo{
-      font-size:34px;
-      color:gold;
-      font-family:'Cinzel', serif;
-      font-weight:700;
-      letter-spacing:2px;
-    }
-
-    .nav-links{
-      display:flex;
-      gap:35px;
-      align-items:center;
-    }
-
-    .nav-links a{
-      text-decoration:none;
-      color:white;
-      transition:0.3s;
-      font-size:15px;
-    }
-
-    .nav-links a:hover{
-      color:gold;
-    }
-
-    .cart-btn{
-      background:gold;
-      color:black;
-      padding:12px 22px;
-      border-radius:30px;
-      font-weight:600;
-    }
-
-    /* HERO */
-
-    .hero{
-      height:100vh;
-      background:
-      linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.8)),
-      url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1800&auto=format&fit=crop');
-
-      background-size:cover;
-      background-position:center;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      position:relative;
-      padding:0 10%;
-    }
-
-    .hero::before{
-      content:"";
-      position:absolute;
-      width:500px;
-      height:500px;
-      background:gold;
-      filter:blur(180px);
-      opacity:0.08;
-      border-radius:50%;
-      top:10%;
-      left:-10%;
-    }
-
-    .hero-content{
-      position:relative;
-      z-index:2;
-      animation:fadeIn 2s ease;
-    }
-
-    .hero h1{
-      font-size:85px;
-      color:gold;
-      font-family:'Cinzel', serif;
-      margin-bottom:25px;
-      line-height:1.1;
-    }
-
-    .hero p{
-      font-size:20px;
-      max-width:850px;
-      margin:auto;
-      line-height:1.8;
-      color:#ddd;
-    }
-
-    .hero-buttons{
-      margin-top:40px;
-      display:flex;
-      justify-content:center;
-      gap:20px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      padding:16px 40px;
-      border:none;
-      border-radius:40px;
-      cursor:pointer;
-      font-size:16px;
-      transition:0.4s;
-      font-weight:600;
-    }
-
-    .gold-btn{
-      background:gold;
-      color:black;
-    }
-
-    .gold-btn:hover{
-      transform:translateY(-5px);
-      box-shadow:0 0 30px gold;
-    }
-
-    .outline-btn{
-      background:transparent;
-      color:white;
-      border:1px solid gold;
-    }
-
-    .outline-btn:hover{
-      background:gold;
-      color:black;
-    }
-
-    /* SECTION TITLE */
-
-    .section-title{
-      text-align:center;
-      font-size:50px;
-      color:gold;
-      margin-bottom:70px;
-      font-family:'Cinzel', serif;
-    }
-
-    section{
-      padding:120px 8%;
-    }
-
-    /* PRODUCTS */
-
-    .product-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:35px;
-    }
-
-    .card{
-      background:linear-gradient(180deg,#111,#050505);
-      border:1px solid rgba(255,215,0,0.25);
-      border-radius:25px;
-      overflow:hidden;
-      transition:0.5s;
-      position:relative;
-    }
-
-    .card:hover{
-      transform:translateY(-12px);
-      box-shadow:0 0 40px rgba(255,215,0,0.25);
-    }
-
-    .card img{
-      width:100%;
-      height:380px;
-      object-fit:cover;
-    }
-
-    .card-content{
-      padding:25px;
-    }
-
-    .card h3{
-      color:gold;
-      margin-bottom:10px;
-      font-size:24px;
-    }
-
-    .price{
-      font-size:20px;
-      margin-bottom:20px;
-      color:#ddd;
-    }
-
-    .shop-btn{
-      width:100%;
-      padding:14px;
-      border:none;
-      background:gold;
-      color:black;
-      border-radius:30px;
-      font-weight:600;
-      cursor:pointer;
-      transition:0.4s;
-    }
-
-    .shop-btn:hover{
-      box-shadow:0 0 20px gold;
-    }
-
-    /* ABOUT */
-
-    .about{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-      gap:60px;
-      align-items:center;
-    }
-
-    .about img{
-      width:100%;
-      border-radius:30px;
-      border:2px solid rgba(255,215,0,0.25);
-    }
-
-    .about-text h2{
-      font-size:55px;
-      color:gold;
-      margin-bottom:25px;
-      font-family:'Cinzel', serif;
-    }
-
-    .about-text p{
-      color:#ccc;
-      line-height:2;
-      margin-bottom:35px;
-      font-size:17px;
-    }
-
-    /* CATEGORIES */
-
-    .category-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:30px;
-    }
-
-    .category{
-      position:relative;
-      overflow:hidden;
-      border-radius:25px;
-      height:450px;
-      cursor:pointer;
-    }
-
-    .category img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transition:0.7s;
-    }
-
-    .category:hover img{
-      transform:scale(1.15);
-    }
-
-    .category-overlay{
-      position:absolute;
-      inset:0;
-      background:linear-gradient(transparent,rgba(0,0,0,0.9));
-      display:flex;
-      align-items:flex-end;
-      padding:35px;
-    }
-
-    .category-overlay h3{
-      color:white;
-      font-size:34px;
-      font-family:'Cinzel', serif;
-    }
-
-    /* TESTIMONIALS */
-
-    .testimonial-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:30px;
-    }
-
-    .testimonial{
-      background:#0a0a0a;
-      border:1px solid rgba(255,215,0,0.2);
-      padding:40px;
-      border-radius:25px;
-      transition:0.4s;
-    }
-
-    .testimonial:hover{
-      transform:translateY(-10px);
-      box-shadow:0 0 25px rgba(255,215,0,0.2);
-    }
-
-    .testimonial p{
-      color:#ccc;
-      line-height:1.9;
-      margin-bottom:25px;
-    }
-
-    .testimonial h4{
-      color:gold;
-      font-size:20px;
-    }
-
-    /* NEWSLETTER */
-
-    .newsletter{
-      background:
-      linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
-      url('https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1800&auto=format&fit=crop');
-
-      background-size:cover;
-      background-position:center;
-      border-radius:40px;
-      text-align:center;
-      padding:100px 8%;
-      border:1px solid rgba(255,215,0,0.2);
-    }
-
-    .newsletter h2{
-      font-size:55px;
-      color:gold;
-      margin-bottom:20px;
-      font-family:'Cinzel', serif;
-    }
-
-    .newsletter p{
-      max-width:700px;
-      margin:auto;
-      color:#ddd;
-      line-height:1.8;
-      margin-bottom:40px;
-    }
-
-    .newsletter-box{
-      display:flex;
-      justify-content:center;
-      gap:15px;
-      flex-wrap:wrap;
-    }
-
-    .newsletter-box input{
-      padding:18px;
-      width:350px;
-      border:none;
-      border-radius:40px;
-      background:white;
-      font-size:16px;
-    }
-
-    footer{
-      padding:50px;
-      text-align:center;
-      border-top:1px solid rgba(255,215,0,0.15);
-      margin-top:100px;
-      color:gold;
-    }
-
-    /* ANIMATION */
-
-    @keyframes fadeIn{
-      from{
-        opacity:0;
-        transform:translateY(30px);
-      }
-
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
-
-    /* MOBILE */
-
-    @media(max-width:768px){
-
-      .hero h1{
-        font-size:50px;
-      }
-
-      .hero p{
-        font-size:17px;
-      }
-
-      .section-title{
-        font-size:38px;
-      }
-
-      .about-text h2{
-        font-size:40px;
-      }
-
-      .newsletter h2{
-        font-size:40px;
-      }
-
-      nav{
-        padding:20px 5%;
-      }
-
-      .nav-links{
-        display:none;
-      }
-
-    }
-
-  </style>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pwani Pure</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:black;
+font-family:'Poppins', sans-serif;
+color:white;
+overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 7%;
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(12px);
+z-index:1000;
+border-bottom:1px solid rgba(255,215,0,0.2);
+}
+
+.logo{
+font-size:34px;
+font-family:'Cinzel', serif;
+color:gold;
+font-weight:bold;
+}
+
+.nav-links{
+display:flex;
+gap:30px;
+align-items:center;
+}
+
+.nav-links a{
+color:white;
+text-decoration:none;
+transition:0.3s;
+}
+
+.nav-links a:hover{
+color:gold;
+}
+
+.cart{
+background:gold;
+color:black !important;
+padding:10px 20px;
+border-radius:30px;
+font-weight:600;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:0 8%;
+
+background:
+linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
+url('https://images.pexels.com/photos/6621461/pexels-photo-6621461.jpeg');
+
+background-size:cover;
+background-position:center;
+}
+
+.hero-content h1{
+font-size:85px;
+font-family:'Cinzel', serif;
+color:gold;
+margin-bottom:20px;
+}
+
+.hero-content p{
+max-width:750px;
+margin:auto;
+line-height:1.9;
+font-size:20px;
+color:#ddd;
+}
+
+.hero-buttons{
+margin-top:40px;
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:16px 38px;
+border:none;
+border-radius:40px;
+cursor:pointer;
+font-size:16px;
+transition:0.4s;
+font-weight:600;
+}
+
+.gold-btn{
+background:gold;
+color:black;
+}
+
+.gold-btn:hover{
+transform:translateY(-5px);
+box-shadow:0 0 25px gold;
+}
+
+.outline-btn{
+background:transparent;
+border:1px solid gold;
+color:white;
+}
+
+.outline-btn:hover{
+background:gold;
+color:black;
+}
+
+/* SECTION */
+
+section{
+padding:120px 8%;
+}
+
+.section-title{
+text-align:center;
+font-size:50px;
+font-family:'Cinzel', serif;
+color:gold;
+margin-bottom:70px;
+}
+
+/* PRODUCTS */
+
+.product-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:35px;
+}
+
+.card{
+background:#0d0d0d;
+border:1px solid rgba(255,215,0,0.2);
+border-radius:25px;
+overflow:hidden;
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 25px rgba(255,215,0,0.2);
+}
+
+.card img{
+width:100%;
+height:380px;
+object-fit:cover;
+}
+
+.card-content{
+padding:25px;
+}
+
+.card h3{
+color:gold;
+margin-bottom:10px;
+font-size:25px;
+}
+
+.price{
+margin-bottom:20px;
+font-size:18px;
+color:#ddd;
+}
+
+.shop-btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:30px;
+background:gold;
+color:black;
+font-weight:600;
+cursor:pointer;
+}
+
+/* ABOUT */
+
+.about{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:60px;
+align-items:center;
+}
+
+.about img{
+width:100%;
+border-radius:25px;
+}
+
+.about-text h2{
+font-size:50px;
+color:gold;
+font-family:'Cinzel', serif;
+margin-bottom:25px;
+}
+
+.about-text p{
+line-height:2;
+color:#ccc;
+margin-bottom:30px;
+}
+
+/* CATEGORIES */
+
+.category-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.category{
+position:relative;
+overflow:hidden;
+border-radius:25px;
+height:420px;
+}
+
+.category img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:0.5s;
+}
+
+.category:hover img{
+transform:scale(1.1);
+}
+
+.overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(transparent, rgba(0,0,0,0.9));
+display:flex;
+align-items:flex-end;
+padding:30px;
+}
+
+.overlay h3{
+font-size:35px;
+font-family:'Cinzel', serif;
+}
+
+/* TESTIMONIALS */
+
+.testimonial-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.testimonial{
+background:#0d0d0d;
+padding:40px;
+border-radius:25px;
+border:1px solid rgba(255,215,0,0.2);
+}
+
+.testimonial p{
+line-height:1.9;
+color:#ccc;
+margin-bottom:20px;
+}
+
+.testimonial h4{
+color:gold;
+}
+
+/* NEWSLETTER */
+
+.newsletter{
+background:#0d0d0d;
+padding:80px;
+border-radius:30px;
+text-align:center;
+border:1px solid rgba(255,215,0,0.2);
+}
+
+.newsletter h2{
+font-size:50px;
+font-family:'Cinzel', serif;
+color:gold;
+margin-bottom:20px;
+}
+
+.newsletter p{
+max-width:700px;
+margin:auto;
+line-height:1.9;
+color:#ccc;
+margin-bottom:35px;
+}
+
+.newsletter-box{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.newsletter-box input{
+padding:18px;
+width:320px;
+border:none;
+border-radius:40px;
+font-size:16px;
+}
+
+footer{
+padding:50px;
+text-align:center;
+color:gold;
+margin-top:70px;
+border-top:1px solid rgba(255,215,0,0.2);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero-content h1{
+font-size:50px;
+}
+
+.hero-content p{
+font-size:16px;
+}
+
+.nav-links{
+display:none;
+}
+
+.section-title{
+font-size:38px;
+}
+
+.newsletter{
+padding:50px 25px;
+}
+
+}
+
+</style>
 
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
+<!-- NAVBAR -->
 
-  <nav>
+<nav>
 
-    <div class="logo">
-      Pwani Pure
-    </div>
+<div class="logo">
+Pwani Pure
+</div>
 
-    <div class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">Shop</a>
-      <a href="#">Skincare</a>
-      <a href="#">Fashion</a>
-      <a href="#">Contact</a>
+<div class="nav-links">
 
-      <a href="#" class="cart-btn">
-        🛒 Cart
-      </a>
-    </div>
+<a href="#">Home</a>
+<a href="#">Shop</a>
+<a href="#">Skincare</a>
+<a href="#">Fashion</a>
+<a href="#">Contact</a>
 
-  </nav>
+<a href="#" class="cart">
+🛒 Cart
+</a>
 
-  <!-- HERO -->
+</div>
 
-  <section class="hero">
+</nav>
 
-    <div class="hero-content">
+<!-- HERO -->
 
-      <h1>
-        Pure Beauty <br>
-        Pure Luxury
-      </h1>
+<section class="hero">
 
-      <p>
-        Experience timeless elegance through luxury skincare,
-        premium fashion, and curated beauty inspired by confidence,
-        sophistication, and coastal serenity.
-      </p>
+<div class="hero-content">
 
-      <div class="hero-buttons">
+<h1>
+Pure Beauty <br>
+Pure Luxury
+</h1>
 
-        <button class="btn gold-btn">
-          Shop Collection
-        </button>
+<p>
+Luxury skincare and timeless fashion inspired by elegance,
+confidence, and coastal beauty.
+</p>
 
-        <button class="btn outline-btn">
-          Explore Brand
-        </button>
+<div class="hero-buttons">
 
-      </div>
+<button class="btn gold-btn">
+Shop Now
+</button>
 
-    </div>
+<button class="btn outline-btn">
+View Collection
+</button>
 
-  </section>
+</div>
 
-  <!-- PRODUCTS -->
+</div>
 
-  <section>
+</section>
 
-    <h2 class="section-title">
-      Featured Collection
-    </h2>
+<!-- PRODUCTS -->
 
-    <div class="product-grid">
+<section>
 
-      <div class="card">
+<h2 class="section-title">
+Featured Collection
+</h2>
 
-        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1400&auto=format&fit=crop">
+<div class="product-grid">
 
-        <div class="card-content">
+<div class="card">
 
-          <h3>Golden Glow Serum</h3>
+<img src="https://images.pexels.com/photos/3762879/pexels-photo-3762879.jpeg">
 
-          <div class="price">$45</div>
+<div class="card-content">
 
-          <button class="shop-btn">
-            Add To Cart
-          </button>
+<h3>Golden Glow Serum</h3>
 
-        </div>
+<div class="price">
+$45
+</div>
 
-      </div>
+<button class="shop-btn">
+Add To Cart
+</button>
 
-      <div class="card">
+</div>
 
-        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1400&auto=format&fit=crop">
+</div>
 
-        <div class="card-content">
+<div class="card">
 
-          <h3>Luxury Silk Dress</h3>
+<img src="https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg">
 
-          <div class="price">$120</div>
+<div class="card-content">
 
-          <button class="shop-btn">
-            Add To Cart
-          </button>
+<h3>Luxury Silk Dress</h3>
 
-        </div>
+<div class="price">
+$120
+</div>
 
-      </div>
+<button class="shop-btn">
+Add To Cart
+</button>
 
-      <div class="card">
+</div>
 
-        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1400&auto=format&fit=crop">
+</div>
 
-        <div class="card-content">
+<div class="card">
 
-          <h3>Pure Essence Cream</h3>
+<img src="https://images.pexels.com/photos/2113855/pexels-photo-2113855.jpeg">
 
-          <div class="price">$60</div>
+<div class="card-content">
 
-          <button class="shop-btn">
-            Add To Cart
-          </button>
+<h3>Pure Essence Cream</h3>
 
-        </div>
+<div class="price">
+$60
+</div>
 
-      </div>
+<button class="shop-btn">
+Add To Cart
+</button>
 
-    </div>
+</div>
 
-  </section>
+</div>
 
-  <!-- ABOUT -->
+</div>
 
-  <section>
-
-    <div class="about">
-
-      <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=1600&auto=format&fit=crop">
-
-      <div class="about-text">
-
-        <h2>
-          About Pwani Pure
-        </h2>
-
-        <p>
-          Pwani Pure is more than a luxury brand —
-          it is an experience crafted for those who embrace beauty,
-          elegance, and timeless confidence.
-
-          Inspired by the richness of coastal luxury and refined fashion,
-          our collections merge premium skincare with sophisticated style.
-        </p>
-
-        <button class="btn gold-btn">
-          Discover More
-        </button>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- CATEGORIES -->
-
-  <section>
-
-    <h2 class="section-title">
-      Shop By Category
-    </h2>
-
-    <div class="category-grid">
-
-      <div class="category">
-
-        <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?q=80&w=1400&auto=format&fit=crop">
-
-        <div class="category-overlay">
-          <h3>Skincare</h3>
-        </div>
-
-      </div>
-
-      <div class="category">
-
-        <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=1400&auto=format&fit=crop">
-
-        <div class="category-overlay">
-          <h3>Fashion</h3>
-        </div>
-
-      </div>
-
-      <div class="category">
-
-        <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=1400&auto=format&fit=crop">
-
-        <div class="category-overlay">
-          <h3>Accessories</h3>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- TESTIMONIALS -->
-
-  <section>
-
-    <h2 class="section-title">
-      Client Experiences
-    </h2>
-
-    <div class="testimonial-grid">
-
-      <div class="testimonial">
-
-        <p>
-          “Absolutely luxurious. Every product feels premium
-          and transforms my skincare routine beautifully.”
-        </p>
-
-        <h4>
-          — Sophia M.
-        </h4>
-
-      </div>
-
-      <div class="testimonial">
-
-        <p>
-          “Elegant fashion, flawless quality,
-          and a truly world-class luxury experience.”
-        </p>
-
-        <h4>
-          — Amelia K.
-        </h4>
-
-            </div>
-
-      <div class="testimonial">
-
-        <p>
-          “The customer service, presentation,
-          and product quality are simply unmatched.”
-        </p>
-
-        <h4>
-          — Nadia R.
-        </h4>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- NEWSLETTER -->
-
-  <section>
-
-    <div class="newsletter">
-
-      <h2>
-        Join The Pwani Pure World
-      </h2>
-
-      <p>
-        Be the first to access exclusive skincare launches,
-        luxury fashion drops, VIP offers, and timeless beauty inspiration.
-      </p>
-
-      <div class="newsletter-box">
-
-        <input type="email" placeholder="Enter your email">
-
-        <button class="btn gold-btn">
-          Subscribe
-        </button>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <h2 style="font-family:'Cinzel', serif; font-size:40px; margin-bottom:20px;">
-      Pwani Pure
-    </h2>
-
-    <p style="color:#ccc; max-width:700px; margin:auto; line-height:1.8; margin-bottom:30px;">
-      Luxury skincare and fashion inspired by elegance,
-      confidence, and timeless coastal beauty.
-    </p>
-
-    <div style="display:flex; justify-content:center; gap:25px; flex-wrap:wrap; margin-bottom:30px;">
-
-      <a href="#" style="color:gold; text-decoration:none;">
-        Instagram
-      </a>
-
-      <a href="#" style="color:gold; text-decoration:none;">
-        TikTok
-      </a>
-
-      <a href="#" style="color:gold; text-decoration:none;">
-        Facebook
-      </a>
-
-      <a href="#" style="color:gold; text-decoration:none;">
-        Pinterest
-      </a>
-
-    </div>
-
-    <p style="color:#777;">
-      © 2026 Pwani Pure — Luxury Skincare & Fashion
-    </p>
-
-  </footer>
+</section>
 
 </body>
 
