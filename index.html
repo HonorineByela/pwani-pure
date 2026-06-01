@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Pwani Pure | Luxury Skincare & Fashion</title>
 
@@ -27,6 +27,28 @@
       overflow-x:hidden;
       scroll-behavior:smooth;
     }
+
+    ::selection{
+      background:gold;
+      color:black;
+    }
+
+    /* SCROLLBAR */
+
+    ::-webkit-scrollbar{
+      width:8px;
+    }
+
+    ::-webkit-scrollbar-track{
+      background:black;
+    }
+
+    ::-webkit-scrollbar-thumb{
+      background:gold;
+      border-radius:10px;
+    }
+
+    /* NAVBAR */
 
     nav{
       width:100%;
@@ -55,7 +77,6 @@
       display:flex;
       gap:35px;
       align-items:center;
-      flex-wrap:wrap;
     }
 
     .nav-links a{
@@ -71,11 +92,13 @@
 
     .cart-btn{
       background:gold;
-      color:black !important;
+      color:black;
       padding:12px 22px;
       border-radius:30px;
       font-weight:600;
     }
+
+    /* HERO */
 
     .hero{
       height:100vh;
@@ -89,10 +112,30 @@
       justify-content:center;
       align-items:center;
       text-align:center;
+      position:relative;
       padding:0 10%;
     }
 
-    .hero-content h1{
+    .hero::before{
+      content:"";
+      position:absolute;
+      width:500px;
+      height:500px;
+      background:gold;
+      filter:blur(180px);
+      opacity:0.08;
+      border-radius:50%;
+      top:10%;
+      left:-10%;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      animation:fadeIn 2s ease;
+    }
+
+    .hero h1{
       font-size:85px;
       color:gold;
       font-family:'Cinzel', serif;
@@ -100,7 +143,7 @@
       line-height:1.1;
     }
 
-    .hero-content p{
+    .hero p{
       font-size:20px;
       max-width:850px;
       margin:auto;
@@ -147,9 +190,7 @@
       color:black;
     }
 
-    section{
-      padding:120px 8%;
-    }
+    /* SECTION TITLE */
 
     .section-title{
       text-align:center;
@@ -158,6 +199,12 @@
       margin-bottom:70px;
       font-family:'Cinzel', serif;
     }
+
+    section{
+      padding:120px 8%;
+    }
+
+    /* PRODUCTS */
 
     .product-grid{
       display:grid;
@@ -171,6 +218,7 @@
       border-radius:25px;
       overflow:hidden;
       transition:0.5s;
+      position:relative;
     }
 
     .card:hover{
@@ -209,7 +257,14 @@
       border-radius:30px;
       font-weight:600;
       cursor:pointer;
+      transition:0.4s;
     }
+
+    .shop-btn:hover{
+      box-shadow:0 0 20px gold;
+    }
+
+    /* ABOUT */
 
     .about{
       display:grid;
@@ -238,6 +293,8 @@
       font-size:17px;
     }
 
+    /* CATEGORIES */
+
     .category-grid{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -249,6 +306,7 @@
       overflow:hidden;
       border-radius:25px;
       height:450px;
+      cursor:pointer;
     }
 
     .category img{
@@ -277,6 +335,84 @@
       font-family:'Cinzel', serif;
     }
 
+    /* TESTIMONIALS */
+
+    .testimonial-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .testimonial{
+      background:#0a0a0a;
+      border:1px solid rgba(255,215,0,0.2);
+      padding:40px;
+      border-radius:25px;
+      transition:0.4s;
+    }
+
+    .testimonial:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 25px rgba(255,215,0,0.2);
+    }
+
+    .testimonial p{
+      color:#ccc;
+      line-height:1.9;
+      margin-bottom:25px;
+    }
+
+    .testimonial h4{
+      color:gold;
+      font-size:20px;
+    }
+
+    /* NEWSLETTER */
+
+    .newsletter{
+      background:
+      linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+      url('https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1800&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+      border-radius:40px;
+      text-align:center;
+      padding:100px 8%;
+      border:1px solid rgba(255,215,0,0.2);
+    }
+
+    .newsletter h2{
+      font-size:55px;
+      color:gold;
+      margin-bottom:20px;
+      font-family:'Cinzel', serif;
+    }
+
+    .newsletter p{
+      max-width:700px;
+      margin:auto;
+      color:#ddd;
+      line-height:1.8;
+      margin-bottom:40px;
+    }
+
+    .newsletter-box{
+      display:flex;
+      justify-content:center;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    .newsletter-box input{
+      padding:18px;
+      width:350px;
+      border:none;
+      border-radius:40px;
+      background:white;
+      font-size:16px;
+    }
+
     footer{
       padding:50px;
       text-align:center;
@@ -285,28 +421,50 @@
       color:gold;
     }
 
+    /* ANIMATION */
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    /* MOBILE */
+
     @media(max-width:768px){
 
-      nav{
-        flex-direction:column;
-        gap:15px;
-      }
-
-      .nav-links{
-        justify-content:center;
-        gap:15px;
-      }
-
-      .nav-links a{
-        font-size:12px;
-      }
-
-      .hero-content h1{
+      .hero h1{
         font-size:50px;
       }
 
-      .hero-content p{
-        font-size:16px;
+      .hero p{
+        font-size:17px;
+      }
+
+      .section-title{
+        font-size:38px;
+      }
+
+      .about-text h2{
+        font-size:40px;
+      }
+
+      .newsletter h2{
+        font-size:40px;
+      }
+
+      nav{
+        padding:20px 5%;
+      }
+
+      .nav-links{
+        display:none;
       }
 
     }
@@ -326,7 +484,6 @@
     </div>
 
     <div class="nav-links">
-
       <a href="#">Home</a>
       <a href="#">Shop</a>
       <a href="#">Skincare</a>
@@ -336,7 +493,6 @@
       <a href="#" class="cart-btn">
         🛒 Cart
       </a>
-
     </div>
 
   </nav>
@@ -460,6 +616,9 @@
           Pwani Pure is more than a luxury brand —
           it is an experience crafted for those who embrace beauty,
           elegance, and timeless confidence.
+
+          Inspired by the richness of coastal luxury and refined fashion,
+          our collections merge premium skincare with sophisticated style.
         </p>
 
         <button class="btn gold-btn">
@@ -516,8 +675,125 @@
 
   </section>
 
+  <!-- TESTIMONIALS -->
+
+  <section>
+
+    <h2 class="section-title">
+      Client Experiences
+    </h2>
+
+    <div class="testimonial-grid">
+
+      <div class="testimonial">
+
+        <p>
+          “Absolutely luxurious. Every product feels premium
+          and transforms my skincare routine beautifully.”
+        </p>
+
+        <h4>
+          — Sophia M.
+        </h4>
+
+      </div>
+
+      <div class="testimonial">
+
+        <p>
+          “Elegant fashion, flawless quality,
+          and a truly world-class luxury experience.”
+        </p>
+
+        <h4>
+          — Amelia K.
+        </h4>
+
+            </div>
+
+      <div class="testimonial">
+
+        <p>
+          “The customer service, presentation,
+          and product quality are simply unmatched.”
+        </p>
+
+        <h4>
+          — Nadia R.
+        </h4>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- NEWSLETTER -->
+
+  <section>
+
+    <div class="newsletter">
+
+      <h2>
+        Join The Pwani Pure World
+      </h2>
+
+      <p>
+        Be the first to access exclusive skincare launches,
+        luxury fashion drops, VIP offers, and timeless beauty inspiration.
+      </p>
+
+      <div class="newsletter-box">
+
+        <input type="email" placeholder="Enter your email">
+
+        <button class="btn gold-btn">
+          Subscribe
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
   <footer>
-    © 2026 Pwani Pure — Luxury Skincare & Fashion
+
+    <h2 style="font-family:'Cinzel', serif; font-size:40px; margin-bottom:20px;">
+      Pwani Pure
+    </h2>
+
+    <p style="color:#ccc; max-width:700px; margin:auto; line-height:1.8; margin-bottom:30px;">
+      Luxury skincare and fashion inspired by elegance,
+      confidence, and timeless coastal beauty.
+    </p>
+
+    <div style="display:flex; justify-content:center; gap:25px; flex-wrap:wrap; margin-bottom:30px;">
+
+      <a href="#" style="color:gold; text-decoration:none;">
+        Instagram
+      </a>
+
+      <a href="#" style="color:gold; text-decoration:none;">
+        TikTok
+      </a>
+
+      <a href="#" style="color:gold; text-decoration:none;">
+        Facebook
+      </a>
+
+      <a href="#" style="color:gold; text-decoration:none;">
+        Pinterest
+      </a>
+
+    </div>
+
+    <p style="color:#777;">
+      © 2026 Pwani Pure — Luxury Skincare & Fashion
+    </p>
+
   </footer>
 
 </body>
