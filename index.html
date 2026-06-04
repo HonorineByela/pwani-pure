@@ -50,23 +50,22 @@
 
     /* NAVBAR */
 
-    nav{
-      width:100%;
-      display:flex;
-      z-index:1000;
-      justify-content:space-between;
-      align-items:center;
-      padding:25px 7%;
-      position:fixed;
-      top:0;
-      left:0;
-      z-index:1000;
-      backdrop-filter:blur(15px);
-      background:rgba(0,0,0,0.45);
-      border-bottom:1px solid rgba(255,215,0,0.2);
-    }
+    .navbar{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 7%;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:9999;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid rgba(255,215,0,0.2);
+}
 
-    .logo{
+.logo{
   font-size:34px;
   color:gold;
   font-family:'Cinzel', serif;
@@ -75,54 +74,37 @@
 }
 
 .menu-btn{
-  color:gold;
+  display:none;
   font-size:32px;
+  color:gold;
   cursor:pointer;
-  display:block;
-  position:relative;
-  z-index:9999;
+  z-index:10000;
 }
 
-    .nav-links{
+/* desktop nav */
+.nav-links{
   display:flex;
-  gap:35px;
+  gap:30px;
   align-items:center;
-  z-index:1000;
 }
 
-.show-menu{
-  display:flex !important;
-  flex-direction:column;
-  position:fixed;
-  top:80px;
-  right:20px;
-  background:black;
-  border:1px solid gold;
-  border-radius:15px;
-  padding:20px;
-  gap:15px;
-  width:200px;
-  z-index:9999;
+.nav-links a{
+  text-decoration:none;
+  color:white;
+  font-size:15px;
 }
 
-    .nav-links a{
-      text-decoration:none;
-      color:white;
-      transition:0.3s;
-      font-size:15px;
-    }
+.nav-links a:hover{
+  color:gold;
+}
 
-    .nav-links a:hover{
-      color:gold;
-    }
-
-    .cart-btn{
-      background:gold;
-      color:black;
-      padding:12px 22px;
-      border-radius:30px;
-      font-weight:600;
-    }
+.cart-btn{
+  background:gold;
+  color:black;
+  padding:10px 18px;
+  border-radius:25px;
+  font-weight:600;
+}
 
     /* HERO */
 
@@ -505,30 +487,22 @@
 <body>
 
   <!-- NAVBAR -->
+<nav class="navbar">
 
-  <nav>
+  <div class="logo">Pwani Pure</div>
 
-    <div class="logo">
-  Pwani Pure
-</div>
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-<div class="menu-btn" onclick="alert('clicked')">
-  ☰
-</div>
+  <div class="nav-links" id="mobileMenu">
+    <a href="#">Home</a>
+    <a href="#">Shop</a>
+    <a href="#">Skincare</a>
+    <a href="#">Fashion</a>
+    <a href="#">Contact</a>
+    <a href="#" class="cart-btn">🛒 Cart</a>
+  </div>
 
-<div class="nav-links" id="mobileMenu">
-  <a href="#">Home</a>
-  <a href="#">Shop</a>
-  <a href="#">Skincare</a>
-  <a href="#">Fashion</a>
-  <a href="#">Contact</a>
-
-  <a href="#" class="cart-btn">
-    🛒 Cart
-  </a>
-</div>
-
-  </nav>
+</nav>
 
   <!-- HERO -->
 
