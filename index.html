@@ -66,6 +66,12 @@
     }
 
     .logo{
+      .menu-btn{
+  color:gold;
+  font-size:32px;
+  cursor:pointer;
+  display:none;
+}
       font-size:34px;
       color:gold;
       font-family:'Cinzel', serif;
@@ -439,6 +445,16 @@
 
     @media(max-width:768px){
 
+  .menu-btn{
+    display:block;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+}
+
       .hero h1{
         font-size:50px;
       }
@@ -460,16 +476,11 @@
       }
 
       nav{
-  padding:15px 4%;
-  flex-direction:column;
-  gap:15px;
+  padding:20px 5%;
 }
 
       .nav-links{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:15px;
+  display:none;
 }
 
     }
@@ -485,8 +496,14 @@
   <nav>
 
     <div class="logo">
-      Pwani Pure
-    </div>
+  Pwani Pure
+</div>
+
+<div class="menu-btn">
+  ☰
+</div>
+
+<div class="nav-links">
 
     <div class="nav-links">
       <a href="#">Home</a>
