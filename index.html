@@ -80,6 +80,19 @@
     }
 
     .nav-links{
+      .show-menu{
+  display:flex !important;
+  flex-direction:column;
+  position:absolute;
+  top:90px;
+  right:20px;
+  background:#000;
+  border:1px solid rgba(255,215,0,0.3);
+  border-radius:20px;
+  padding:20px;
+  gap:20px;
+  width:220px;
+}
       display:flex;
       gap:35px;
       align-items:center;
@@ -499,11 +512,11 @@
   Pwani Pure
 </div>
 
-<div class="menu-btn">
+<div class="menu-btn" onclick="toggleMenu()">
   ☰
 </div>
 
-<div class="nav-links">
+<div class="nav-links" id="mobileMenu">
 
     <div class="nav-links">
       <a href="#">Home</a>
@@ -818,6 +831,16 @@
 
   </footer>
 
+<script>
+
+function toggleMenu(){
+  document
+    .getElementById("mobileMenu")
+    .classList
+    .toggle("show-menu");
+}
+
+</script>
 </body>
 
 </html>
