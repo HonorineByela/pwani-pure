@@ -511,7 +511,7 @@
 
   <div class="logo">Pwani Pure</div>
 
-  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  <div class="menu-btn" id="menuBtn">☰</div>
 
   <div class="nav-links" id="mobileMenu">
     <a href="#">Home</a>
@@ -824,9 +824,12 @@
   </footer>
 
 <script>
-function toggleMenu(){
-  document.getElementById("mobileMenu").classList.toggle("show-menu");
-}
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+menuBtn.addEventListener("click", function () {
+  mobileMenu.classList.toggle("show-menu");
+});
 </script>
 </body>
 
