@@ -57,6 +57,7 @@
   align-items:center;
   padding:20px 7%;
   position:fixed;
+  overflow:visible;
   top:0;
   left:0;
   z-index:9999;
@@ -451,8 +452,27 @@
   }
 
   .nav-links{
-    display:none;
-  }
+  display:none;
+  flex-direction:column;
+  position:absolute;
+  top:80px;
+  right:20px;
+  width:250px;
+  background:#111;
+  padding:25px;
+  border:1px solid rgba(255,215,0,0.3);
+  border-radius:20px;
+  gap:20px;
+  z-index:9999;
+}
+
+.nav-links.show-menu{
+  display:flex;
+}
+.nav-links a{
+  width:100%;
+  text-align:center;
+}
 
   .hero h1{
     font-size:50px;
